@@ -35,6 +35,11 @@ void setup() {
 } //End setup
 //
 void draw() {
+  ellipse(120,30,15,40); 
+  circle(69,69,69);
+  square(100,200,45);
+  circle(100,200,45);
+  
 } //End draw
 //
 void keyPressed() {
