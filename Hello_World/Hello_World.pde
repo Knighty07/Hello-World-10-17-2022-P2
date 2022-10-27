@@ -1,10 +1,13 @@
 //Global Variables
 int appWidth, appHeight;
 float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect; 
+color black=#504D4D, white=#FFFFFF, blue=#1970B4,purple=#6422D1, yellow=#FEFF4B;
+color yellowNightMode=#F8FC00, purpleNightMode=#FA0096;
+float thick, thin;
 //
 void setup() {
   //Declare Display Geometry: square, landscape, portrait
-  size(800, 600); //Use size for debugging
+  size(1200, 800); //Use size for debugging
   //fullScreen(); //Use fullScreen for easy deployment
   appWidth = width;
   appHeight = height;
@@ -33,12 +36,14 @@ void setup() {
   //If ORIENTATION is wrong ... feedback to change it
   //if ( orientation==p ) println(instruct);
   //Population
-  centerwidth = width * 1/2;
-  centerheight = height * 1/2
-  xStart = centerwidth - (width * 1/4);
-  yStart = centerheight - (height * 1/4);
-  widthRect=width * 1/2
-  heightRect= height * 1/2
+  centerWidth = width * 1/2;
+  centerHeight = height * 1/2;
+  xStart = centerWidth - (width * 1/4);
+  yStart = centerHeight - (height * 1/4);
+  widthRect = appWidth * 1/2;
+  heightRect = appHeight  * 1/2;
+  thick = appWidth *1/60;
+  thin = appWidth *1/120;
 } //End setup
 //
 void draw() {
@@ -48,7 +53,18 @@ void draw() {
   circle(100,200,45);
 rect(120, 97, 230, 230, 40);
   rect(xStart, yStart, widthRect, heightRect);
-  
+  background(170); //gray scale 0-255
+  background( color( random(0,220), random(0,255), random(255) ) ); //color (r,g,b)
+  //Night Mode
+  background(black);
+  //
+  strokeWeight(thin);
+  stroke(purple);//purpleNightMode
+  fill(blue);//blueNightMode
+  rect(xStart, yStart, widthRect, heightRect);
+  fill(black);// Reset default
+  stroke(black);//Reset default
+  strokeWeight(1);//Resets default
 } //End draw
 //
 void keyPressed() {
