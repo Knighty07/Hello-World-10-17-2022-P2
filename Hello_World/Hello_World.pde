@@ -4,6 +4,7 @@ float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
 color black=#504D4D, white=#FFFFFF, blue=#1970B4,purple=#6422D1, yellow=#FEFF4B;
 color yellowNightMode=#F8FC00, purpleNightMode=#FA0096;
 float thick, thin;
+Boolean grayScale=false, randomColour=false, blackBackground=false, nightMode=false;
 //
 void setup() {
   //Declare Display Geometry: square, landscape, portrait
@@ -47,6 +48,23 @@ void setup() {
 } //End setup
 //
 void draw() {
+  if ( grayScale == true ) background(225) ; //Gray Scale 0-255
+  //random(a, b)
+    if ( randomColour == true ) background( color( random(0, 255), random(255), random(255) ) ); //color(r,g,b), Casting 
+  //Night Mode
+  if ( blackBackground == true ) background(black);
+  //
+  strokeWeight(thick); //noStroke()
+  //Night Mode Decision
+  if ( nightMode == true )
+  {
+    stroke(yellowNightMode);
+    fill(purpleNightMode);
+  } else
+  {
+    stroke(yellow);
+    fill(purple);
+  }
   ellipse(120,30,15,40); 
   circle(69,69,69);
   square(100,200,45);
@@ -69,9 +87,17 @@ rect(120, 97, 230, 230, 40);
 } //End draw
 //
 void keyPressed() {
+  grayScale = false;
+  randomColour = false;
+  blackBackground = false;
+  if ( key=='A' || key=='a' ) grayScale = true;
+  if ( key=='S' || key=='s' ) randomColour = true;
+  if ( key=='W' || key=='w' ) blackBackground = true;
 } //End keyPressed
 //
 void mousePressed() {
+  if ( mouseButton == LEFT ) nightMode = true;
+  if ( mouseButton == RIGHT ) nightMode = false;
 } //End mousePressed
 //
 // End Main Program
