@@ -51,6 +51,7 @@ void draw() {
   circle(69,69,69);
   square(100,200,45);
   circle(100,200,45);
+  line(400,400,800,700);
 rect(120, 97, 230, 230, 40);
   rect(xStart, yStart, widthRect, heightRect);
   background(170); //gray scale 0-255
